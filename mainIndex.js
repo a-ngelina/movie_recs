@@ -35,6 +35,8 @@ window.addEventListener("DOMContentLoaded", () => {
        if (pageId != "homePage") drawPaginationButtonsAndMovies(pageId, await getDataFromDatabase(pageId), await getDataLength(pageId));
        else {
         drawGenreButtons();
+        readingRatingRequirements();
+        getStars();
         const searchButton = document.getElementById("searchButton");
         searchButton.addEventListener("click", (event) => {
             event.preventDefault();
@@ -107,22 +109,25 @@ window.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    const ratingInputFrom = document.getElementById("ratingFrom");
-    const ratingInputTo = document.getElementById("ratingTo");
-    ratingInputFrom.addEventListener("input", (e) => {
-        let num = ratingInputFrom.value;
-        ratingFrom = (num ? num : 0.0);
-    });
-    ratingInputTo.addEventListener("input", (e) => {
-        let num = ratingInputTo.value;
-        ratingTo = (num ? num : 10.0);
-    });
+    function readingRatingRequirements() {
+        const ratingInputFrom = document.getElementById("ratingFrom");
+        const ratingInputTo = document.getElementById("ratingTo");
+        ratingInputFrom.addEventListener("input", (e) => {
+            let num = ratingInputFrom.value;
+            ratingFrom = (num ? num : 0.0);
+        });
+        ratingInputTo.addEventListener("input", (e) => {
+            let num = ratingInputTo.value;
+            ratingTo = (num ? num : 10.0);
+        });
+    }
+    
+    function getStars() {
+        const starInput = document.getElementById("starSearch");
+        const starResID = document.getElementById("starResID");
+        const selectedStarsID = document.getElementById("selectedStarsID");
 
-    const starInput = document.getElementById("starSearch");
-    const starResID = document.getElementById("starResID");
-    const selectedStarsID = document.getElementById("selectedStarsID");
-
-    if (starInput) {
+    
         starInput.addEventListener("input", () => {
             let str = starInput.value;
             const result = new Set();
@@ -134,48 +139,48 @@ window.addEventListener("DOMContentLoaded", () => {
             }
             setList(result, starResID, selectedStarsID);
         });
-    };
 
-    function setList(result, listRes, listSel) {
-        clearList(listRes);
-        clearList(listSel);
-        document.getElementById("starringLabel").textContent = (selectedStars.size > 0 ? "Starring" : "");
-        for (const star of selectedStars) {
-            const starLI = document.createElement("li");
-            const starLabel = document.createTextNode(star);
-            const selStarIcon = document.createElement("i");
-            selStarIcon.classList.add("fa", "fa-close", "selStarIcon");
-            starLI.classList.add("selStarLI");
-            starLI.appendChild(starLabel);
-            starLI.appendChild(selStarIcon);
-            listSel.appendChild(starLI);
-            selStarIcon.addEventListener("click", () => {
-                selectedStars.delete(star);
-                allStars.add(star);
-                setList(result, listRes, listSel);
-            });
+        function setList(result, listRes, listSel) {
+            clearList(listRes);
+            clearList(listSel);
+            document.getElementById("starringLabel").textContent = (selectedStars.size > 0 ? "Starring" : "");
+            for (const star of selectedStars) {
+                const starLI = document.createElement("li");
+                const starLabel = document.createTextNode(star);
+                const selStarIcon = document.createElement("i");
+                selStarIcon.classList.add("fa", "fa-close", "selStarIcon");
+                starLI.classList.add("selStarLI");
+                starLI.appendChild(starLabel);
+                starLI.appendChild(selStarIcon);
+                listSel.appendChild(starLI);
+                selStarIcon.addEventListener("click", () => {
+                    selectedStars.delete(star);
+                    allStars.add(star);
+                    setList(result, listRes, listSel);
+                });
+            }
+            for (const star of result) {
+                const resultLI = document.createElement("li");
+                const resultButton = document.createElement("button");
+                const resultIcon = document.createElement("i");
+                const resultLabel = document.createTextNode(star);
+                resultIcon.classList.add("fa", "fa-plus", "starIcon");
+                resultButton.classList.add("starButton");
+                resultLI.classList.add("starLI");
+                resultButton.appendChild(resultIcon);
+                resultButton.appendChild(resultLabel);
+                resultLI.appendChild(resultButton);
+                listRes.appendChild(resultLI);
+                resultButton.addEventListener("click", () => {
+                    selectedStars.add(star);
+                    allStars.delete(star);
+                    result.clear();
+                    starInput.value = "";
+                    setList(result, listRes, listSel);
+                });
+            }
         }
-        for (const star of result) {
-            const resultLI = document.createElement("li");
-            const resultButton = document.createElement("button");
-            const resultIcon = document.createElement("i");
-            const resultLabel = document.createTextNode(star);
-            resultIcon.classList.add("fa", "fa-plus", "starIcon");
-            resultButton.classList.add("starButton");
-            resultLI.classList.add("starLI");
-            resultButton.appendChild(resultIcon);
-            resultButton.appendChild(resultLabel);
-            resultLI.appendChild(resultButton);
-            listRes.appendChild(resultLI);
-            resultButton.addEventListener("click", () => {
-                selectedStars.add(star);
-                allStars.delete(star);
-                result.clear();
-                starInput.value = "";
-                setList(result, listRes, listSel);
-            });
-        }
-    };
+    }
 
     const sortOptionSelector = document.getElementById("selectSortOption");
     sortOptionSelector.addEventListener("click", () => {
