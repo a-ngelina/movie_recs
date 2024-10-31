@@ -171,10 +171,14 @@ function drawPaginationButtonsAndMovies(pageName, moviesList, moviesListLength) 
     }
 
     clearList(movieButtons);
+    const moviePromises = [];
     for (let i = (selectedPage - 1) * 10; i < Math.min(moviesListLength, (selectedPage * 10)); i++) {
       const movieName = moviesList[i];
-      const newMovieButton = await drawButton(movieName);
-      movieButtons.appendChild(newMovieButton);
+      moviePromises.push(drawButton(movieName));
+    }
+    const moviesToAppend = await Promise.all(moviePromises);
+    for (const movieButton of moviesToAppend.values()) {
+      movieButtons.appendChild(movieButton);
     }
   }
 
@@ -183,7 +187,7 @@ function drawPaginationButtonsAndMovies(pageName, moviesList, moviesListLength) 
   changeHeader();
   const paginationButtons = document.getElementById(pageName + "PageButtons");
   const movieButtons = document.getElementById(pageName + "Movies");
-  let numPages = moviesListLength ? (moviesListLength - moviesListLength % 10) / 10 + 1 : 0;
+  let numPages = (moviesListLength - moviesListLength % 10) / 10 + (moviesListLength != 0);
   layOutPagination();
   displayResults();
 }
