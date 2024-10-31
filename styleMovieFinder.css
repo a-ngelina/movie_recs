@@ -1,0 +1,130 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  .headerForLists {
+  font-size: 40px;
+  color: rgb(7, 7, 95);
+  }
+  .paginationButton {
+    font-size: 14px;
+    color: rgb(7, 7, 95);
+    background-color: rgb(238, 242, 243);
+    border-color: rgb(42, 42, 172);
+    border-radius: 12px;
+    margin: 2px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    transition-duration: 0.4s;
+  }
+  .paginationButton:hover {
+    background-color: rgb(149, 148, 236);
+  }
+  .selectedPaginationButton {
+    font-size: 14px;
+    color: rgb(7, 7, 95);
+    background-color: rgb(149, 148, 236);
+    border-color: rgb(42, 42, 172);
+    border-radius: 12px;
+    margin: 2px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    transition-duration: 0.4s;
+  }
+  .selectedPaginationButton:hover {
+    background-color: rgb(195, 195, 240);
+  }
+  .ellipsis {
+    font-size: 14px;
+    color: rgb(7, 7, 95);
+    margin: 2px;
+  }
+  .resultMovieButton {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 4px;
+    padding: 10px;
+    text-align: left;
+    background-color: rgb(238, 242, 243);
+    border-color: rgb(42, 42, 172);
+    border-radius: 20px;
+    transition-duration: 0.4s;
+  }
+  .resultMovieButton:hover {
+    background-color: rgb(149, 148, 236);
+  }
+  .titleLabel {
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(7, 7, 95);
+    margin-left: 20px;
+  }
+  
+  .runtimeLabel {
+    font-size: 14px;
+    color: rgb(7, 7, 95);
+    margin-right: 20px;
+    float: right;
+  }
+  .upperLabel {
+    font-size: 20px;
+    color: rgb(7, 7, 95);
+    margin-right: 10px;
+    float: right;
+    transition-duration: 0.4s;
+  }
+  .upperLabel:hover {
+    color: rgb(42, 42, 172);
+  }
+  .voteIcon {
+    font-size: 16px;
+    color: gold;
+    margin-left: 4px;
+  }
+  .voteAvgLabel {
+    font-size: 14px;
+    font-weight: 700;
+    color: rgb(7, 7, 95);
+  }
+  .voteCountLabel {
+    font-size: 14px;
+    color: rgb(7, 7, 95);
+  }
+  .genresTotalLabel {
+    font-size: 14px;
+    font-weight: 700;
+    color: rgb(7, 7, 95);
+    margin-left: 20px;
+  }
+  .genresLabel {
+    font-size: 14px;
+    color: rgb(7, 7, 95);
+  }
+  .starsTotalLabel {
+    font-size: 14px;
+    font-weight: 700;
+    color: rgb(7, 7, 95);
+    margin-left: 20px;
+    margin-right: 4px;
+  }
+  .starsLabel {
+    font-size: 14px;
+    color: rgb(7, 7, 95);
+  }
+  .keywordTotalLabel {
+    font-size: 14px;
+    font-weight: 700;
+    color: rgb(7, 7, 95);
+    margin-left: 20px;
+  }
+  .keywordLabel {
+    font-size: 14px;
+    color: rgb(7, 7, 95);
+  }
+}

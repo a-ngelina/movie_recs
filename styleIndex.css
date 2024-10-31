@@ -1,0 +1,230 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  .headerIcon {
+    font-size: 35px;
+    color: rgb(7, 7, 95);
+  }
+  .header {
+    padding-left: 10px;
+    display: inline-block;
+    font-size: 40px;
+    color: rgb(7, 7, 95);
+  }
+  .navBar {
+    display: flex;
+    align-items: center;
+    height: 80px;
+    padding: 0px 40px;
+    margin-bottom: 14px;
+    background-color: rgb(195, 195, 240);
+    justify-content: space-between;
+    box-shadow: 6px 6px 6px rgb(25, 25, 135);
+  }
+  .loginButton, .logoutButton {
+    border-radius: 6px;
+    width: 110px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-color: rgb(42, 42, 172);
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(238, 242, 243);
+    background-color: rgb(25, 25, 135);
+    transition-duration: 0.4s;
+  }
+  .loginButton:hover, .logoutButton:hover {
+    background-color: rgb(42, 42, 172);
+  }
+  .logoutButton{
+    display: none;
+  }
+  .homePage, .watchedMovies, .favouriteMovies, .savedMovies {
+    top: 60px;
+    font-size: 26px;
+    color: rgb(7, 7, 95);
+    margin: 0px 10px;
+    transition-duration: 0.4s;
+  }
+  .homePage:hover, .watchedMovies:hover, .favouriteMovies:hover, .savedMovies:hover {
+    color: rgb(42, 42, 172);
+  }
+  .loginPopup, .signupPopup {
+    display: none;
+    width: 400px;
+    height: 400px;
+    border-radius: 20px;
+    position: absolute;
+    left: 50%;
+    top: 400px;
+    transform: translate(-50%, -50%);
+    background-color: rgba(25, 25, 135, 0.418);
+    backdrop-filter: blur(8px);
+    color: rgb(238, 242, 243);
+    font-size: 20px;
+    padding: 0px 50px;
+    box-shadow: 6px 6px 6px rgb(25, 25, 135, 0.7);
+  }
+  .closeIcon {
+    font-size: 26px;
+    color: rgb(238, 242, 243);
+  }
+  .closeSpan {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45px;
+    height: 45px;
+    background-color: rgb(25, 25, 135);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+  .closeSpan, .loginWithGoogle, .signupWithGoogle, .loginActionButton, .signupActionButton {
+    transition-duration: 0.4s;
+  }
+  .closeSpan:hover, .loginWithGoogle:hover, .signupWithGoogle:hover, .loginActionButton:hover, .signupActionButton:hover {
+    background-color: rgb(42, 42, 172);
+  }
+  .emailInput label {
+    margin-top: 60px;
+  }
+  .emailInput input, .passwordInput input {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 16px;
+    border: 3px solid rgb(238, 242, 243);
+    color: rgb(7, 7, 95);
+  }
+  .emailInput input:focus, .passwordInput input:focus {
+    border: 3px solid rgb(42, 42, 172);
+  }
+  .loginWithGoogle, .signupWithGoogle {
+    width: 100%;
+    border-radius: 6px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+    border-color: rgb(42, 42, 172);
+    font-size: 16px;
+    font-weight: bold;
+    color: rgb(238, 242, 243);
+    background-color: rgb(25, 25, 135);
+  }
+  .loginActionButton, .signupActionButton {
+    width: 100%;
+    border-radius: 6px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin-top: 12px;
+    margin-bottom: 16px;
+    border-color: rgb(42, 42, 172);
+    font-size: 16px;
+    font-weight: bold;
+    color: rgb(238, 242, 243);
+    background-color: rgb(25, 25, 135);
+  }
+  .loginRef, .signupRef {
+    transition-duration: 0.7s;
+  }
+  .loginRef:hover, .signupRef:hover {
+    color: rgb(25, 25, 135);
+  }
+  .genreButtonNotSel {
+    height: 35px;
+    border-radius: 20px;
+    margin: 4px;
+    padding-right: 8px;
+    border-color: rgb(42, 42, 172);
+    font-size: 16px;
+    color: rgb(7, 7, 95);
+    background-color: rgb(238, 242, 243);
+    transition-duration: 0.4s;
+  }
+  .genreButtonNotSel:hover {
+    background-color: rgb(149, 148, 236);
+  }
+  .genreButtonSel {
+    height: 35px;
+    border-radius: 20px;
+    margin: 4px;
+    padding-right: 8px;
+    border-color: rgb(42, 42, 172);
+    font-size: 16px;
+    color: rgb(7, 7, 95);
+    background-color: rgb(149, 148, 236);
+    transition-duration: 1.0s;
+  }
+  .genreButtonSel:hover {
+    background-color: rgb(195, 195, 240);
+  }
+  .genreIcon {
+    font-size: 14px;
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+  .inputLabel {
+    font-size: 18px;
+    color: rgb(7, 7, 95);
+  }
+  .starResUL {
+    list-style-type: none;
+  }
+  .starButton {
+    font-size: 16px;
+    color: rgb(7, 7, 95);
+    background-color: rgb(238, 242, 243);
+    border-color: rgb(42, 42, 172);
+    border-radius: 20px;
+    margin-bottom: 6px;
+    margin-left: -30px;
+    padding-right: 10px;
+    height: 30px;
+    transition-duration: 0.4s;
+  }
+  .starButton:hover {
+    background-color: rgb(149, 148, 236);
+  }
+  .starIcon {
+    font-size: 14px;
+    color: rgb(7, 7, 95);
+    margin-left: 6px;
+    margin-right: 8px;
+  }
+  .selStarLI {
+    color: rgb(7, 7, 95);
+    font-size: 18px;
+  }
+  .selStarIcon {
+    font-size: 16px;
+    color: rgb(7, 7, 95);
+    margin-left: 6px;
+  }
+  .selectedStarsUL {
+    list-style-type: none;
+  }
+  .searchButton {
+    font-size: 30px;
+    color: rgb(7, 7, 95);
+    background-color: rgb(238, 242, 243);
+    border-color: rgb(42, 42, 172);
+    border-radius: 30px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    transition-duration: 0.4s;
+  }
+  .searchButton:hover {
+    background-color: rgb(149, 148, 236);
+  }
+}

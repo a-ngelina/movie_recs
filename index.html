@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html>
+    <head>
+        <link rel="stylesheet" href="styleIndex.css">
+        <link rel="stylesheet" href="styleMovieFinder.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="./assets/imdbData.js" type="module"></script>
+        <script src="mainIndex.js" type="module"></script>
+        <script src="movieFinder.js" type="module"></script>
+        <script src="movieRecs.js" type="module"></script>
+        <script src="firebase.js" type="module"></script>
+        <script src="userMovies.js" type="module"></script>
+        <meta charset="UTF-8">
+        <title>MovieRec</title>
+    </head>
+
+    <body>
+        <header class="navBar">
+            <i class="fa fa-laptop headerIcon"><h1 class="header">Movie selector</h1></i>
+            <nav>
+                <a class="homePage" id="homePageNavButton" href="#"><i class="fa fa-home"></i></a>
+                <a class="watchedMovies" id="watchedNavButton" href="#"><i class="fa fa-eye"></i></a>
+                <a class="favouriteMovies" id="favouriteNavButton" href="#"><i class="fa fa-heart"></i></a>
+                <a class="savedMovies" id="savedNavButton" href="#"><i class="fa fa-bookmark"></i></a>
+                <button class="loginButton", id="loginButton">Log in</button>
+                <button class="logoutButton", id="logoutButton">Log out</button>
+            </nav>
+        </header>
+
+        <main id="pageContent">
+
+        </main>
+
+        <div class="loginPopup" id="loginPopup">
+            <span class="closeSpan">
+                <i class="fa fa-close closeIcon" id="closeIconLogin"></i>
+            </span>
+            <center>
+                <h2>Log in</h2>
+                <form>
+                    <div class="emailInput">
+                        <label>email</label>
+                        <input type="email"  id="emailInputLogin" required>
+                    </div>
+                    <div class="passwordInput">
+                        <label>password</label>
+                        <input type="password" id="passwordInputLogin" required>
+                    </div>
+                    <button class="loginActionButton" id="loginActionButton">Log in</button><br>
+                </form>
+                <button class="loginWithGoogle" id="loginWithGoogle">Log in with Google</button><br>
+                <a class="signupRef" id="signupRef">Sign up</a>
+            </center>
+        </div>
+
+        <div class="signupPopup" id="signupPopup">
+            <span class="closeSpan">
+                <i class="fa fa-close closeIcon" id="closeIconSignup"></i>
+            </span>
+            <center>
+                <h2>Sign up</h2>
+                <form>
+                    <div class="emailInput">
+                        <label>email</label>
+                        <input type="email" id="emailInputSignup" required>
+                    </div>
+                    <div class="passwordInput">
+                        <label>password</label>
+                        <input type="password" id="passwordInputSignup" required>
+                    </div>
+                    <button class="signupActionButton" id="signupActionButton">Sign up</button><br>
+                </form>
+                <button class="signupWithGoogle" id="signupWithGoogle">Sign up with Google</button><br>
+                <a class="loginRef" id="loginRef">Log in</a>
+            </center>
+        </div>
+        
+        <template id="homePageTemplate">
+        <form>
+            <div id="genreButtons">
+
+            </div>
+            <p>
+                <label class="inputLabel">Rating from </label>
+                <input id="ratingFrom" type="number" placeholder="0.0" class="inputLabel">
+                <label class="inputLabel">to </label>
+                <input id="ratingTo" type="number" placeholder="10.0" class="inputLabel">
+            </p>
+            <p>
+                <label class="inputLabel">Search for stars</label>
+                <input id="starSearch" type="search" placeholder="star" class="inputLabel">
+                <ul class="starResUL" id="starResID"></ul>
+                <p class="inputLabel" id="starringLabel"></p>
+                <ul class="selectedStarsUL" id="selectedStarsID"></ul>
+            </p>
+            <p>
+                <label class="inputLabel">I want the recomendations to be sorted </label>
+                <select id="selectSortOption" class="inputLabel">
+                    <option>by default</option>
+                    <option>alphabetically</option>
+                    <option>by rating (descending)</option>
+                    <option>by review count (descending)</option>
+                </select>
+            </p>
+            <center><button id="searchButton" class="searchButton">Search</button></center>
+        </form>
+        <center><h1 id="movieFindsHeader" class="headerForLists"></h1></center>
+        <center><div id="movieFindsPageButtons"></div></center>
+        <p>
+            <div id="movieFindsMovies">
+
+            </div>
+        </p>
+        </template>
+
+        <template id="watchedTemplate">
+            <h1 class="headerForLists" id="watchedHeader">Loading info about watched movies...</h1>
+            <center><div id="watchedPageButtons"></div></center>
+            <div id="watchedMovies"></div>
+        </template>
+
+        <template id="favouriteTemplate">
+            <h1 class="headerForLists" id="favouriteHeader">Loading info about favourite movies...</h1>
+            <center><div id="favouritePageButtons"></div></center>
+            <div id="favouriteMovies"></div>
+        </template>
+
+        <template id="savedTemplate">
+            <h1 class="headerForLists" id="savedHeader">Loading info about saved movies...</h1>
+            <center><div id="savedPageButtons"></div></center>
+            <div id="savedMovies"></div>
+        </template>
+    </body>
+</html>
